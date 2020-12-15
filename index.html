@@ -31,8 +31,24 @@
 
         /*PlayRound function plays a single round the function takes two parameters and return
         a string that declares the winner
+        the first parameter the player inputs it and the second parameter has a default value
+        and takes it from computerPlay function
         */
-        
+        function playRound(playerSelection, computerSelection = computerPLay()) {
+            let playerChoice = playerSelection.toLowerCase();
+            let computerChoice = computerSelection.toLowerCase();
+            if (playerChoice === 'paper' && computerChoice === 'rock') {
+                return 'You Win! Paper beats Rock';
+            } else if(playerChoice === 'scissors' && computerChoice === 'paper'){
+                return 'You Win! Scissors beats Paper';
+            } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
+                return 'You Win! Rock beats Scissors';
+            } else if(playerChoice === computerChoice){
+                return "It's a tie";
+            } else{
+                return `You Lose! ${computerChoice} beats ${playerChoice}`;
+            }
+        }
     </script>
 </body>
 </html>
