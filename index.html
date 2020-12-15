@@ -79,8 +79,10 @@
             }
             if (playerScore > computerScore) {
                 console.log(`Congrats You are a winner and the Result is: ${playerScore} : ${computerScore}`);
-            } else{
+            } else if(playerScore < computerScore){
                 console.log(`You are a Loser and the Result is: ${playerScore} : ${computerScore}`);
+            } else{
+                console.log("It's a tie after all");
             }
         }
         game();
