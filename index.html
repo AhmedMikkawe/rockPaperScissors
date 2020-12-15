@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Rock Paper Scissors</title>
+</head>
+<body>
+    <script>
+        /* 
+        computerPlay function randomly return Rock, Paper, or Scissors
+        Because We Have only three Choice I used Math.random() to randomly retrun from 1 to 3 number
+        and Math.floor() for convert the number to integer
+        */
+        function computerPLay() {
+            let computerChoice = Math.floor(Math.random() * 3) + 1;
+            switch (computerChoice) {
+                case 1:
+                    return "Rock";
+                    break;
+                case 2:
+                    return "Paper";
+                    break;
+                case 3:
+                    return "Scissors";
+                default:
+                    return "Something Wrong in Computer Play Function";
+                    break;
+            }
+        }
+
+        /*PlayRound function plays a single round the function takes two parameters and return
+        a string that declares the winner
+        */
+        
+    </script>
+</body>
+</html>
