@@ -6,7 +6,48 @@
     <title>Rock Paper Scissors</title>
 </head>
 <body>
+    <div id='buttons'>
+        <button value="rock">Rock</button>
+        <button value="paper">Paper</button>
+        <button value="scissors">Scissors</button>
+    </div>
+    <div id="result"></div>
+    <div id="finalResult">
+        <h1></h1>
+    </div>
     <script>
+        /*add event listener for every button to get user input and check Score*/
+        const rock = document.querySelector('button[value="rock"]');
+        const paper = document.querySelector('button[value="paper"]');
+        const scissors = document.querySelector('button[value="scissors"]');
+        const showResult = document.querySelector('#result');
+        const finalResult = document.querySelector('h1');
+        let playerScore = 0;
+        let computerScore = 0;
+        rock.addEventListener('click',function(){
+            getUserInput(`${rock.value}`);
+            checkScore();
+        });
+        paper.addEventListener('click',function(){
+            getUserInput(`${paper.value}`);
+            checkScore();
+        });
+        scissors.addEventListener('click',function(){
+            getUserInput(`${scissors.value}`);
+            checkScore();
+        }); 
+        function getUserInput(input) {
+            let userInput = playRound(input);
+            return userInput;
+        }
+        function checkScore() {
+            finalResult.textContent = `The Match Result is ${playerScore} : ${computerScore}`;
+            if (playerScore === 5) {
+                return finalResult.textContent = `You Won The whole game ${playerScore} : ${computerScore}`; 
+            } else if(computerScore === 5){
+                return finalResult.textContent = `You Lose The whole game ${playerScore} : ${computerScore}`;
+            }
+        }
         /* 
         computerPlay function randomly return Rock, Paper, or Scissors
         Because We Have only three Choice I used Math.random() to randomly retrun from 1 to 3 number
@@ -28,7 +69,6 @@
                     break;
             }
         }
-
         /*PlayRound function plays a single round the function takes two parameters and return
         a string that declares the winner
         the first parameter the player inputs it and the second parameter has a default value
@@ -38,54 +78,27 @@
             let playerChoice = playerSelection.toLowerCase();
             let computerChoice = computerSelection.toLowerCase();
             if (playerChoice === 'paper' && computerChoice === 'rock') {
-                return 1;
+                //console.log();
+                playerScore++;
+                return showResult.textContent = 'You Win! Paper beats Rock';
             } else if(playerChoice === 'scissors' && computerChoice === 'paper'){
-                return 2;
+                //return 'You Win! Scissors beats Paper';
+                playerScore++;
+                return showResult.textContent = 'You Win! Scissors beats Paper';
             } else if (playerChoice === 'rock' && computerChoice === 'scissors') {
-                return 3;
+                //return 'You Win! Rock beats Scissors';
+                playerScore++;
+                return showResult.textContent = 'You Win! Rock beats Scissors';
             } else if(playerChoice === computerChoice){
-                return 4;
+                //return "It's a tie";
+                return showResult.textContent = "It's a tie";
             } else{
-                return `You Lose! ${computerChoice} beats ${playerChoice}`;
+                //return `You Lose! ${computerChoice} beats ${playerChoice}`;
+                computerScore++;
+                return showResult.textContent = `You Lose! ${computerChoice} beats ${playerChoice}`;
             }
         }
-        /*game function keeps the score and reports a winner or loser at the end
-        two variables for the two players scores (computer and player)
-        and loop for five times for the game rounds
-        each round adds one to the winner variable
-        and after the loop ends print the final result depending on the two variables
-        */
-        function game() {
-            let playerScore = 0;
-            let computerScore = 0;
-            for (let i = 1; i <= 5; i++) {
-                let input = prompt('Please Choose: Rock, Paper or Scissors ');
-                let result = playRound(input);
-                if (result === 1) {
-                    console.log('You Win! Paper beats Rock');
-                    playerScore++;
-                } else if (result === 2) {
-                    console.log('You Win! Scissors beats Paper');
-                    playerScore++;
-                } else if (result === 3) {
-                    console.log('You Win! Rock beats Scissors');
-                    playerScore++;
-                } else if(result === 4){
-                    console.log("It's a tie");
-                } else{
-                    console.log(result);
-                    computerScore++;
-                }
-            }
-            if (playerScore > computerScore) {
-                console.log(`Congrats You are a winner and the Result is: ${playerScore} : ${computerScore}`);
-            } else if(playerScore < computerScore){
-                console.log(`You are a Loser and the Result is: ${playerScore} : ${computerScore}`);
-            } else{
-                console.log("It's a tie after all");
-            }
-        }
-        game();
+        
     </script>
 </body>
 </html>
