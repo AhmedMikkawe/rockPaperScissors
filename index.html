@@ -43,8 +43,14 @@
         function checkScore() {
             finalResult.textContent = `The Match Result is ${playerScore} : ${computerScore}`;
             if (playerScore === 5) {
+                rock.setAttribute('disabled', 'true');
+                paper.setAttribute('disabled', 'true');
+                scissors.setAttribute('disabled', 'true');
                 return finalResult.textContent = `You Won The whole game ${playerScore} : ${computerScore}`; 
             } else if(computerScore === 5){
+                rock.setAttribute('disabled', 'true');
+                paper.setAttribute('disabled', 'true');
+                scissors.setAttribute('disabled', 'true');
                 return finalResult.textContent = `You Lose The whole game ${playerScore} : ${computerScore}`;
             }
         }
